@@ -1,0 +1,275 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ZHX的小公园 - 一只喜欢java的孩子</title><meta name="description" content="博客 , java"><meta name="keywords" content="博客 ,个人博客, java,张洪祥,java基础,javaweb,layui,hexo,ssm,SSM,数据结构与算法"><meta name="author" content="张洪祥"><meta name="copyright" content="张洪祥"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://zhx.coderzhx.cn/page/7/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="website"><meta property="og:title" content="ZHX的小公园"><meta property="og:url" content="http://zhx.coderzhx.cn/page/7/"><meta property="og:site_name" content="ZHX的小公园"><meta property="og:description" content="博客 , java"><meta property="og:image" content="http://zhx.coderzhx.cn/img/avatar.png"><meta property="article:published_time" content="2020-08-15T07:46:33.261Z"><meta property="article:modified_time" content="2020-08-15T07:46:33.261Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: false,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isSidebar: false,
+  postUpdate: '2020-08-15 15:46:33'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">97</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">45</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">22</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div></div></div><div id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">ZHX的小公园</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="site-info"><h1 id="site_title">ZHX的小公园</h1><div id="site_subtitle"><span id="subtitle"></span></div></div><div id="scroll_down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/08/09/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E8%AE%BE%E7%BD%AESSL%E9%85%8D%E7%BD%AEHTTPS/" title="宝塔面板设置SSL配置HTTPS">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="宝塔面板设置SSL配置HTTPS"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/09/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E8%AE%BE%E7%BD%AESSL%E9%85%8D%E7%BD%AEHTTPS/" title="宝塔面板设置SSL配置HTTPS">宝塔面板设置SSL配置HTTPS</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-09T07:20:57.516Z" title="发表于 2020-08-09 15:20:57">2020-08-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></span></div><div class="content">众所周知http无论用什么方式都无法避免传输信息的安全问题,SSL证书的产生才让信息传输实现真正安全,就是https,类似于中介,而且双方都是完全信任这个中介
+
+
+腾讯云中配置安全组开放443端口
+宝塔配置SSL
+
+宝塔放行443端口
+配置简直不要太简单!</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/08/09/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98(%E5%9B%9E%E6%BA%AF%E6%B3%95)/" title="八皇后问题(回溯法)">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="八皇后问题(回溯法)"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/09/%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98(%E5%9B%9E%E6%BA%AF%E6%B3%95)/" title="八皇后问题(回溯法)">八皇后问题(回溯法)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-09T07:20:57.511Z" title="发表于 2020-08-09 15:20:57">2020-08-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/java%E5%9F%BA%E7%A1%80/">java基础</a></span></div><div class="content">八皇后游戏规则在8x8棋盘里有8个皇后 ,每一个皇后之间都不能在同一行,同一列,同一45度斜线
+什么是回溯法我的理解就是暴力探索,每个点都去尝试一下,不行那就回头,直到达到目标
+
+
+思路至少能知道每行,每列 都会有一个皇后
+所以由第1行第1列放第一个皇后开始探索,第二个放在第2行的第1列,判断游戏规则是否成立?
+
+成立则开始第三行的1-8列逐一试探,以此类推,找到8个为止,
+不成立则回到上一步(回溯),换下一个点
+
+每次加入的皇后都要与前面的所有加入的皇后比较
+
+打印成功排列123456private  void print() &#123;		for (int i = 0; i &lt; array.length; i++) &#123;			System.out.print(array[i]+" ");		&#125;		System.out.println();	&#125;
+
+判断每次加入皇后是否合法1234567891011//判断每个加入的皇后是否符合游戏规则,与之前所有的皇后比较	private  boolean judge(int n) &#123;		count++; ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/08/09/Thymeleaf%E4%B8%ADimg%E6%A0%87%E7%AD%BE%E5%BC%95%E5%85%A5%E8%B6%85%E9%93%BE%E6%8E%A5%E7%9A%84%E9%97%AE%E9%A2%98/" title="Thymeleaf中img标签引入超链接的问题">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Thymeleaf中img标签引入超链接的问题"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/09/Thymeleaf%E4%B8%ADimg%E6%A0%87%E7%AD%BE%E5%BC%95%E5%85%A5%E8%B6%85%E9%93%BE%E6%8E%A5%E7%9A%84%E9%97%AE%E9%A2%98/" title="Thymeleaf中img标签引入超链接的问题">Thymeleaf中img标签引入超链接的问题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-09T07:20:57.507Z" title="发表于 2020-08-09 15:20:57">2020-08-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/Thymeleaf/">Thymeleaf</a></span></div><div class="content">Thymeleaf中img标签引入超链接的问题因为我把图片全部存储在七牛云,仅仅使用一个超链接,但是img标签th:src默认加上localhost:8080
+1&lt;img   th:src="$&#123;config.wechat_icon&#125;" /&gt;
+
+导致路径变成了,访问就报错了
+
+
+1&lt;img src="http://localhost:8080/puu1qclkk.bkt.clouddn.com/xxxx"&gt;
+
+其实解决非常简单,但我查阅了各种资料,花了几个小时,只需要加上 || 就可以了!
+1&lt;img   th:src="|$&#123;config.wechat_icon&#125;|" /&gt;
+
+渲染得到的效果就是正常了
+1&lt;img src="http://puu1qclkk.bkt.clouddn.com/xxxx"&gt;
+
+
+
+这个问题可把我憋屈坏了!
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/08/09/String%E5%B8%B8%E9%87%8F%E6%B1%A0/" title="String常量池">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="String常量池"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/09/String%E5%B8%B8%E9%87%8F%E6%B1%A0/" title="String常量池">String常量池</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-09T07:20:57.504Z" title="发表于 2020-08-09 15:20:57">2020-08-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/java%E5%9F%BA%E7%A1%80/">java基础</a></span></div><div class="content">常量池引起的对象之间的比较
+
+123456789String a="a";//(1)String b="a";System.out.println(a==b);//trueString ab="a"+"b";//(2)String ab2="ab";System.out.println(ab==ab2);//trueString aba="a"+"b"+a;//(3)String aba2="aba";System.out.println(aba==aba2);//false
+
+1.Sring类final修饰的,所以java虚拟机会在编译的时候就会把字面量(字面量”a”那就是a)放到常量池中
+常量池只能有一份一样的字面量,比如变量a在常量池中已经有一份了,那么变量b来的时候只是字面量”a”的引用,所以a和b 都是指向同一个空间,所以为true
+2.这个和上面是一样的道理
+3.因为变量a是变量,所以不确定aba变量,默认new一份,既然是new 的当然不一样了,那就是false了
+</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/08/09/String,StringBuilder%E5%92%8CStringBuffer/" title="String,StringBuilder和StringBuffer">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="String,StringBuilder和StringBuffer"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/09/String,StringBuilder%E5%92%8CStringBuffer/" title="String,StringBuilder和StringBuffer">String,StringBuilder和StringBuffer</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-09T07:20:57.500Z" title="发表于 2020-08-09 15:20:57">2020-08-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/java%E5%9F%BA%E7%A1%80/">java基础</a></span></div><div class="content">String是不可变的因为String 方法底层是用 final修饰的char [] ,因此String str=&quot;c&quot;+&quot;b&quot;这个拼接字符串是不会产生垃圾的,
+
+
+但如果
+12String a="c";a+="b";
+
+
+
+
+-栈
+-堆
+
+
+
+str
+“c”
+
+
+
+“b”
+
+
+
+“cb”
+
+
+
+
+
+
+最终指向”cb” 这就会产生垃圾
+其实有三个堆空间,分别是 “cb”, “c”,”b”,而”c”和”b”变成了垃圾,出现了垃圾空间
+StringBuilder和StringBuffer内容可以改变,底层使用char[]
+他们拼接字符串,只需创建一个对象,是可变的
+比如 StringBuilder a=new StringBuilder();
+a.append(“a”);a.append(“b”);
+
+
+
+
+
+
+
+
+StringBuilder
+StringBuffer
+
+
+线程不安全
+线程安全
+
+
+效率高
+效率低
+
+
+</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/08/09/SSM%E5%AE%9E%E7%8E%B0Layui%E5%88%86%E9%A1%B5/" title="SSM实现Layui分页">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SSM实现Layui分页"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/09/SSM%E5%AE%9E%E7%8E%B0Layui%E5%88%86%E9%A1%B5/" title="SSM实现Layui分页">SSM实现Layui分页</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-09T07:20:57.497Z" title="发表于 2020-08-09 15:20:57">2020-08-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E4%B8%9A%E5%8A%A1%E5%AE%9E%E7%8E%B0/">业务实现</a></span></div><div class="content">论那些年layui踩过的坑
+
+layui分页的特点,加载完文档就异步请求后台,返回json数据加载Layui官方文档 
+只要在 table.render中开启分页 page: true异步请求是自动加上两个参数,在后台接受即可
+Layui的json格式要求:12345678&#123;  "status": 0,  "message": "",   "total": 180,   "data": &#123;    "item": [&#123;&#125;, &#123;&#125;]  &#125;&#125;
+
+所以SpringMVC中这样写,首先你得有PageBean实体类,在最后面我附上了我的PageBean实体类12345678910111213141516171819@RequestMapping(value = "/library/listBook", produces = "text/plain;charset=UTF-8")	public @ResponseBody String listBook(@RequestParam(value = "page", defa ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/08/09/SpringBoot%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5%E5%B1%9E%E6%80%A7%E7%9A%84%E8%AF%A1%E5%BC%82%E4%BA%8B%E4%BB%B6/" title="SpringBoot自动注入属性的诡异事件">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringBoot自动注入属性的诡异事件"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/09/SpringBoot%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5%E5%B1%9E%E6%80%A7%E7%9A%84%E8%AF%A1%E5%BC%82%E4%BA%8B%E4%BB%B6/" title="SpringBoot自动注入属性的诡异事件">SpringBoot自动注入属性的诡异事件</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-09T07:20:57.495Z" title="发表于 2020-08-09 15:20:57">2020-08-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/SpringBoot/">SpringBoot</a></span></div><div class="content">在写项目时遇到的诡异属性注入事件,因为标签的id集合用逗号分割的字符串表示,在开发此功能时发现的一个离奇bug
+
+在写项目时遇到的诡异属性注入事件
+比如下面这段代码
+123456//添加或者修改文章   @PostMapping("/blogs")   public String post(Blog blog) &#123;       System.out.println(blog.getTagIds());//0       return "redirect:/admin/blogs";   &#125;
+
+blog实体类中
+1234567private String tagIds;//标签的id字符串集合,用于业务 public String getTagIds() &#123;        return "0";    &#125;    public void setTagIds(String tagIds) &#123;        this.tagIds = tagIds;    &#125;
+
+比如前台传来数据是字符串1,2,3但是blog实体类中的tagIds属性 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/08/09/SpringBoot%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0Linux%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="SpringBoot项目部署到Linux服务器">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringBoot项目部署到Linux服务器"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/09/SpringBoot%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0Linux%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="SpringBoot项目部署到Linux服务器">SpringBoot项目部署到Linux服务器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-09T07:20:57.492Z" title="发表于 2020-08-09 15:20:57">2020-08-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E9%85%8D%E7%BD%AE/">配置</a></span></div><div class="content">不知道为什么宝塔面板部署SpringBoot项目的时候会报502错误
+但是java web项目就没有问题,所以我直接在Linux上操作了
+
+
+先把SpringBoot项目打包jar
+
+把jar包上传到Linux服务器用XShell软件上传,或者用服务器的宝塔面板,上传完成
+
+先进入所在的目录后运行java -jar demo-0.0.1-SNAPSHOT.jar
+此时就可以用公网ip:8080/访问了
+因为我已经把域名解析到我的主机了所以我可以用域名访问
+
+但是这个关闭了命令控制台就关闭了
+保持项目一直在服务器运行1nohup java -jar demo-0.0.1-SNAPSHOT.jar &amp;
+
+
+这就是运行结果,这样就说明成功了
+查看日志当然得进入目录,查看日志了
+1tail -f nohup.out
+
+关闭项目1jps
+
+
+1kill 3346
+
+完成!
+去掉8080端口到宝塔面板
+添加站点
+
+
+
+现在就可以把8080去掉了关于数据库的问题
+如果出现Unknown Database 应该是 数据库版本或者数据库驱动出现问题
+com.mysql.cj.jdbc.Drive ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2020/08/09/SpringBoot%E6%B7%BB%E5%8A%A0%E7%BC%93%E5%AD%98/" title="SpringBoot添加缓存">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringBoot添加缓存"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/09/SpringBoot%E6%B7%BB%E5%8A%A0%E7%BC%93%E5%AD%98/" title="SpringBoot添加缓存">SpringBoot添加缓存</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-09T07:20:57.488Z" title="发表于 2020-08-09 15:20:57">2020-08-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E9%85%8D%E7%BD%AE/">配置</a></span></div><div class="content">SpringBoot添加缓存博客项目中因为文章写一次之后基本不变了,这种不经常变更但是经常使用的数据,最适合缓存了,缓存是保存使用者的内存中.
+
+1.pom.xml加入依赖12345 &lt;!-- 缓存 --&gt;&lt;dependency&gt;   &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;   &lt;artifactId&gt;spring-boot-starter-cache&lt;/artifactId&gt;&lt;/dependency&gt;
+
+2.Service层加入缓存注解根据id查询文章cacheNames是自定义的,第一次命名后,以后都会直接用这个缓存,而不会进入方法
+123456@Override@Cacheable(cacheNames = "findBlogById")public Blog findBlogById(int id) &#123;    System.out.println("缓存测试");    return  blogMapper.findBlogById(id ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/08/09/SpringBoot%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%AB%99%E7%9A%84ip%E8%AE%BF%E9%97%AE%E6%95%B0%E5%92%8C%E6%80%BB%E6%B5%8F%E8%A7%88%E9%87%8F/" title="SpringBoot实现网站的ip访问数和总浏览量">     <img class="post_bg" data-lazy-src="https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringBoot实现网站的ip访问数和总浏览量"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/08/09/SpringBoot%E5%AE%9E%E7%8E%B0%E7%BD%91%E7%AB%99%E7%9A%84ip%E8%AE%BF%E9%97%AE%E6%95%B0%E5%92%8C%E6%80%BB%E6%B5%8F%E8%A7%88%E9%87%8F/" title="SpringBoot实现网站的ip访问数和总浏览量">SpringBoot实现网站的ip访问数和总浏览量</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-09T07:20:57.485Z" title="发表于 2020-08-09 15:20:57">2020-08-09</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E4%B8%9A%E5%8A%A1%E5%AE%9E%E7%8E%B0/">业务实现</a></span></div><div class="content">用到了切面技术(AOP)切面是什么?:举例乘动车
+
+
+
+@Before类似于过安检,检查大包小包,金属探测器检查全身
+
+乘车过程
+
+-@After到达站点时需要检票出站
+
+@AfterReturning出站成功检票器,记录下了你的相关信息,
+
+@AfterThrowing检票失败,异常
+
+
+1.编写IP访问类1234567891011121314151617181920212223public class RequestLog &#123;        private String url;//访问地址        private String ip;//访问ip        private String classMethod;//访问方法        private Object[] args;//参数        public RequestLog(String url, String ip, String classMethod, Object[] args) &#123;            this.url = url;            this.ip = ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/6/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/8/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">张洪祥</div><div class="author-info__description">博客 , java</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives"><div class="headline">文章</div><div class="length_num">97</div></a></div><div class="card-info-data-item is-center">      <a href="/tags"><div class="headline">标签</div><div class="length_num">45</div></a></div><div class="card-info-data-item is-center"><a href="/categories"><div class="headline">分类</div><div class="length_num">22</div></a></div></div><a class="button--animated" id="card-info-btn" href="https://github.com/xxxxxx" target="_blank" rel="noopener"><i class="fab fa-github"></i><span>Follow Me</span></a></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-recent-item"><div class="aside-recent-post"><a class="aside-post-cover" href="/2020/08/09/%E7%9B%B4%E6%8E%A5%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" title="直接插入排序"><img class="aside-post-bg" data-lazy-src="https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="直接插入排序"/></a><div class="aside-post-info"><a class="aside-post-title" href="/2020/08/09/%E7%9B%B4%E6%8E%A5%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" title="直接插入排序">直接插入排序</a><time class="aside-post_meta post-meta-date" datetime="2020-08-09T07:20:57.698Z" title="发表于 2020-08-09 15:20:57">2020-08-09</time></div></div><div class="aside-recent-post"><a class="aside-post-cover" href="/2020/08/09/%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD%E7%89%B9%E6%95%88(%E7%BE%8E%E5%8C%96%E9%A1%B5%E9%9D%A2)/" title="延迟加载特效(美化页面)"><img class="aside-post-bg" data-lazy-src="https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="延迟加载特效(美化页面)"/></a><div class="aside-post-info"><a class="aside-post-title" href="/2020/08/09/%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD%E7%89%B9%E6%95%88(%E7%BE%8E%E5%8C%96%E9%A1%B5%E9%9D%A2)/" title="延迟加载特效(美化页面)">延迟加载特效(美化页面)</a><time class="aside-post_meta post-meta-date" datetime="2020-08-09T07:20:57.696Z" title="发表于 2020-08-09 15:20:57">2020-08-09</time></div></div><div class="aside-recent-post"><a class="aside-post-cover" href="/2020/08/09/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/" title="选择排序"><img class="aside-post-bg" data-lazy-src="https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="选择排序"/></a><div class="aside-post-info"><a class="aside-post-title" href="/2020/08/09/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/" title="选择排序">选择排序</a><time class="aside-post_meta post-meta-date" datetime="2020-08-09T07:20:57.694Z" title="发表于 2020-08-09 15:20:57">2020-08-09</time></div></div><div class="aside-recent-post"><a class="aside-post-cover" href="/2020/08/09/%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98,%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/" title="修改博客主题,解决中文乱码"><img class="aside-post-bg" data-lazy-src="https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="修改博客主题,解决中文乱码"/></a><div class="aside-post-info"><a class="aside-post-title" href="/2020/08/09/%E4%BF%AE%E6%94%B9%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98,%E8%A7%A3%E5%86%B3%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/" title="修改博客主题,解决中文乱码">修改博客主题,解决中文乱码</a><time class="aside-post_meta post-meta-date" datetime="2020-08-09T07:20:57.691Z" title="发表于 2020-08-09 15:20:57">2020-08-09</time></div></div><div class="aside-recent-post"><a class="aside-post-cover" href="/2020/08/09/%E6%96%B0%E5%BB%BASpringBoot%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" title="新建SpringBoot遇到的问题"><img class="aside-post-bg" data-lazy-src="https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="新建SpringBoot遇到的问题"/></a><div class="aside-post-info"><a class="aside-post-title" href="/2020/08/09/%E6%96%B0%E5%BB%BASpringBoot%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" title="新建SpringBoot遇到的问题">新建SpringBoot遇到的问题</a><time class="aside-post_meta post-meta-date" datetime="2020-08-09T07:20:57.689Z" title="发表于 2020-08-09 15:20:57">2020-08-09</time></div></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div><ul class="card-category-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java%E5%9F%BA%E7%A1%80/"><span class="card-category-list-name">Java基础</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Layui/"><span class="card-category-list-name">Layui</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Mybatis/"><span class="card-category-list-name">Mybatis</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/SpringBoot/"><span class="card-category-list-name">SpringBoot</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Thymeleaf/"><span class="card-category-list-name">Thymeleaf</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/git/"><span class="card-category-list-name">git</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/jQuery/"><span class="card-category-list-name">jQuery</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/java-web/"><span class="card-category-list-name">java web</span><span class="card-category-list-count">1</span></a></li>
+            <li class="card-category-list-item more is-center"><a class="card-category-list-link-more" href="/categories">
+                <span>查看更多</span><i class="fas fa-angle-right"></i></a></li>           
+            </ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 16px; color: #999">-数据结构</a> <a href="/tags/AOP/" style="font-size: 16px; color: #999">AOP</a> <a href="/tags/JavaScript/" style="font-size: 16px; color: #999">JavaScript</a> <a href="/tags/Linux/" style="font-size: 17.5px; color: #999da3">Linux</a> <a href="/tags/Mybatis/" style="font-size: 17.5px; color: #999da3">Mybatis</a> <a href="/tags/Mysql/" style="font-size: 16px; color: #999">Mysql</a> <a href="/tags/Quartz/" style="font-size: 16px; color: #999">Quartz</a> <a href="/tags/SpringBoot/" style="font-size: 20.5px; color: #99a5b6">SpringBoot</a> <a href="/tags/Thymeleaf/" style="font-size: 16px; color: #999">Thymeleaf</a> <a href="/tags/git/" style="font-size: 16px; color: #999">git</a> <a href="/tags/hashmap/" style="font-size: 16px; color: #999">hashmap</a> <a href="/tags/html/" style="font-size: 17.5px; color: #999da3">html</a> <a href="/tags/js/" style="font-size: 16px; color: #999">js</a> <a href="/tags/markdown/" style="font-size: 16px; color: #999">markdown</a> <a href="/tags/mysql/" style="font-size: 16px; color: #999">mysql</a> <a href="/tags/sql/" style="font-size: 16px; color: #999">sql</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 16px; color: #999">事务</a> <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" style="font-size: 16px; color: #999">二分查找</a> <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 19px; color: #99a1ac">二叉树</a> <a href="/tags/%E5%85%8B%E9%9A%86/" style="font-size: 16px; color: #999">克隆</a> <a href="/tags/%E5%85%AB%E7%9A%87%E5%90%8E/" style="font-size: 16px; color: #999">八皇后</a> <a href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" style="font-size: 16px; color: #999">冒泡排序</a> <a href="/tags/%E5%88%86%E6%B2%BB%E6%B3%95/" style="font-size: 16px; color: #999">分治法</a> <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" style="font-size: 16px; color: #999">哈希表</a> <a href="/tags/%E5%9B%9E%E6%BA%AF/" style="font-size: 16px; color: #999">回溯</a> <a href="/tags/%E5%9B%9E%E6%BA%AF%E6%B3%95/" style="font-size: 16px; color: #999">回溯法</a> <a href="/tags/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/" style="font-size: 16px; color: #999">图片上传</a> <a href="/tags/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/" style="font-size: 16px; color: #999">基数排序</a> <a href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" style="font-size: 16px; color: #999">归并排序</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" style="font-size: 16px; color: #999">快速排序</a> <a href="/tags/%E6%8F%92%E5%80%BC%E6%9F%A5%E6%89%BE/" style="font-size: 16px; color: #999">插值查找</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 22px; color: #99a9bf">数据结构</a> <a href="/tags/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" style="font-size: 16px; color: #999">时间复杂度</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 17.5px; color: #999da3">服务器</a> <a href="/tags/%E7%9B%B4%E6%8E%A5%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" style="font-size: 16px; color: #999">直接插入排序</a> <a href="/tags/%E7%A9%B7%E4%B8%BE/" style="font-size: 16px; color: #999">穷举</a> <a href="/tags/%E7%BA%A6%E7%91%9F%E5%A4%AB/" style="font-size: 16px; color: #999">约瑟夫</a> <a href="/tags/%E8%AF%84%E8%AE%BA/" style="font-size: 16px; color: #999">评论</a> <a href="/tags/%E8%AF%A1%E5%BC%82/" style="font-size: 16px; color: #999">诡异</a> <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" style="font-size: 16px; color: #999">贪心算法</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/08/"><span class="card-archive-list-date">八月 2020</span><span class="card-archive-list-count">96</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/07/"><span class="card-archive-list-date">七月 2020</span><span class="card-archive-list-count">1</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">文章数目 :</div><div class="webinfo-article-count">97</div></div><div class="webinfo-item">      <div class="webinfo-site-uv-name">本站访客数 :</div><div class="webinfo-site-uv-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="webinfo-site-name">本站总访问量 :</div><div class="webinfo-site-pv-count" id="busuanzi_value_site_pv"></div></div></div></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By 张洪祥</div><div class="framework-info"><span>框架 </span><a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
