@@ -1,0 +1,127 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Zookeeper | ZHX的小公园</title><meta name="description" content="ZookeeperZookper是一个文件系统类型的数据库，创建结点必须要有&#x2F;斜杠 zkServer.sh start 后边加上cfg的文件路径 就能启动服务,配置多个cfg就可以启动多个服务 , zhCli.sh -server ip:端口 启动客户端,可以改变端口和ip连接不同的客户端 当在A客户端创建结点后,B客户端也能访问到A的结点,具有数据一致性的分布式 强一致性某一个用户更新数据库A的"><meta name="keywords" content="分布式,Zookeeper"><meta name="author" content="张洪祥"><meta name="copyright" content="张洪祥"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://blog.coderzhx.cn/2020/08/18/Zookeeper/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="Zookeeper"><meta property="og:url" content="http://blog.coderzhx.cn/2020/08/18/Zookeeper/"><meta property="og:site_name" content="ZHX的小公园"><meta property="og:description" content="ZookeeperZookper是一个文件系统类型的数据库，创建结点必须要有&#x2F;斜杠 zkServer.sh start 后边加上cfg的文件路径 就能启动服务,配置多个cfg就可以启动多个服务 , zhCli.sh -server ip:端口 启动客户端,可以改变端口和ip连接不同的客户端 当在A客户端创建结点后,B客户端也能访问到A的结点,具有数据一致性的分布式 强一致性某一个用户更新数据库A的"><meta property="og:image" content="https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg"><meta property="article:published_time" content="2020-08-18T14:29:13.000Z"><meta property="article:modified_time" content="2020-08-18T14:45:23.186Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: false,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-08-18 22:45:23'
+}</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">101</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">48</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">23</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Zookeeper"><span class="toc-number">1.</span> <span class="toc-text">Zookeeper</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#强一致性"><span class="toc-number">1.0.1.</span> <span class="toc-text">强一致性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#弱一致性"><span class="toc-number">1.0.2.</span> <span class="toc-text">弱一致性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最终一致性"><span class="toc-number">1.0.3.</span> <span class="toc-text">最终一致性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CAP"><span class="toc-number">1.1.</span> <span class="toc-text">CAP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何保证一致性"><span class="toc-number">1.2.</span> <span class="toc-text">如何保证一致性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选举机制"><span class="toc-number">1.3.</span> <span class="toc-text">选举机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#同步过程"><span class="toc-number">1.4.</span> <span class="toc-text">同步过程</span></a></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">ZHX的小公园</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">Zookeeper</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-08-18T14:29:13.000Z" title="发表于 2020-08-18 22:29:13">2020-08-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-08-18T14:45:23.186Z" title="更新于 2020-08-18 22:45:23">2020-08-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%A1%86%E6%9E%B6/">框架</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h1><p>Zookper是一个文件系统类型的数据库，创建结点必须要有/斜杠</p>
+<p><code>zkServer.sh start 后边加上cfg的文件路径</code></p>
+<p>就能启动服务,配置多个cfg就可以启动多个服务 ,</p>
+<p><code>zhCli.sh -server ip:端口</code></p>
+<p>启动客户端,可以改变端口和ip连接不同的客户端</p>
+<p>当在A客户端创建结点后,B客户端也能访问到A的结点,具有<strong>数据一致性的分布式</strong></p>
+<h3 id="强一致性"><a href="#强一致性" class="headerlink" title="强一致性"></a>强一致性</h3><p>某一个用户更新数据库A的数据比如value=2,另外一名用户在集群中从数据库B读取到的value一定要是2,这样就要求数据库之间的同步非常迅速,或者加上锁同步完成后才能读到同步后的数据</p>
+<h3 id="弱一致性"><a href="#弱一致性" class="headerlink" title="弱一致性"></a>弱一致性</h3><p>允许用户读取到同步之前的旧数据</p>
+<h3 id="最终一致性"><a href="#最终一致性" class="headerlink" title="最终一致性"></a>最终一致性</h3><p>允许读到旧数据,但一段时间后一定要是新数据</p>
+<h2 id="CAP"><a href="#CAP" class="headerlink" title="CAP"></a>CAP</h2><p>Consistency:强一致性</p>
+<p>Avalibility:可用性,集群可不可用</p>
+<p>Partition Tolerance:分区容错性 </p>
+<p><strong>分区容错性</strong>:分布式架构中,由于很多模块都分开部署,比如在不同的服务器,这就是分区了 ,但此时模块之间的交互就需要网络很快,网络越快容错性就越高,这就是分区容错性</p>
+<p>一个集群需要对外部提供强一致性,所以只要集群内部某一台服务器发生了改编,那么就需要等待集群内其他服务器的数据同步完成后才能正常对外提供服务</p>
+<p>保证了强一致性,通常需要存好可用性</p>
+<h2 id="如何保证一致性"><a href="#如何保证一致性" class="headerlink" title="如何保证一致性"></a>如何保证一致性</h2><p>上课时老师讲完一个知识点通常会问,懂了没有,当有<strong>大部分学生</strong>懂了,老师就会认为同学懂了,老师不会确保所有学生都听懂了,(<strong>过半机制</strong>)</p>
+<p>其中老师和同学就是不同的服务器,老师是老大,老师讲课过程就是同步的过程,同学们回答懂了,就是完成了同步,同步数据的任务就交给老大服务器</p>
+<p><strong>谁的数据越新谁就是老大</strong>,判断依据就是一个<strong>事务id叫做zxid</strong>,是一个自增id,每次进行<strong>事务性请求(增删改)</strong>时就会自增,非事务性请求(查询)就不会改变id,</p>
+<h2 id="选举机制"><a href="#选举机制" class="headerlink" title="选举机制"></a>选举机制</h2><p>如何选择老大,需要投票,首先每个<strong>服务启动时</strong>会进行类似于淘汰赛的<strong>选举机制</strong>,</p>
+<p>选出zxid最大的作为老大服务器,如果zxid相同则选择myid最大的,谁最后启动最大,新建请求就由老大处理,并同步到子服务器,</p>
+<p>当新进来一个服务器时,不管zxid比老大的zxid大还是小,为了保证稳定性,都要与老大服务器同步,</p>
+<p>老大服务器(leader)挂掉之后,就会重新进行选举机制,当子服务器挂掉,导致少于一半的跟随服务器(follower),也会重新进行选举机制</p>
+<h2 id="同步过程"><a href="#同步过程" class="headerlink" title="同步过程"></a>同步过程</h2><p>首先leader服务器<strong>预提交</strong>,就是在follower服务器中创建事务日志,事务日志中包含了具体的修改数据过程,当follower服务器保存成功则返回ack给leader服务器,</p>
+<p>当有大于一半的服务器都返回了ack,则开始真正的同步数据(<strong>提交</strong>),就是把事务日志中的操作变成各个follower服务器的datatree中具体的数据</p>
+<p>当有7台服务器,<code>7/2=3</code>因此只要大于3就算是过半,</p>
+<p>三台服务器在A机房,三台服务器在B机房,就会存在两个老大的问题,会导致数据不一致,</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">张洪祥</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://blog.coderzhx.cn/2020/08/18/Zookeeper/">http://blog.coderzhx.cn/2020/08/18/Zookeeper/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.coderzhx.cn" target="_blank">ZHX的小公园</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a><a class="post-meta__tags" href="/tags/Zookeeper/">Zookeeper</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/08/18/jwt%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/"><img class="prev-cover" data-lazy-src="https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">jwt单点登录</div></div></a></div><div class="next-post pull-right"><a href="/2020/08/18/MongoDB%E5%AE%89%E8%A3%85/"><img class="next-cover" data-lazy-src="https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">MongoDB安装</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/08/18/Springcloud学习/" title="Springcloud学习"><img class="relatedPosts_cover" data-lazy-src="https://i.loli.net/2020/05/01/IuWi8QbHvzjlOPw.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-08-18</div><div class="relatedPosts_title">Springcloud学习</div></div></a></div></div></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By 张洪祥</div><div class="framework-info"><span>框架 </span><a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>

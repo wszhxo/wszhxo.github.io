@@ -4,6 +4,86 @@
   
     
     <entry>
+      <title>Springcloud学习</title>
+      <link href="/2020/08/18/Springcloud%E5%AD%A6%E4%B9%A0/"/>
+      <url>/2020/08/18/Springcloud%E5%AD%A6%E4%B9%A0/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p> 单体应用（传统项目）—&gt;  分布式架构 —-&gt;SOA架构—–&gt;  微服务架构</p></blockquote><h1 id="StringCloud"><a href="#StringCloud" class="headerlink" title="StringCloud"></a>StringCloud</h1><h2 id="单体应用"><a href="#单体应用" class="headerlink" title="单体应用"></a>单体应用</h2><p>传统项目，所有的模块都在一个项目中开发，</p><p>当项目变大时，开发人员任务不好分配，容易产生冲突，一个模块的错误导致整个项目都不能用</p><h2 id="分布式架构"><a href="#分布式架构" class="headerlink" title="分布式架构"></a>分布式架构</h2><p>将传统的项目拆分成很多个子项目，比如会员项目，订单项目，每个项目都有自己独立的数据库，不同模块部署在不同的服务器上，减轻单台服务器压力</p><blockquote><p> 注：Maven聚合依赖项目并不是分布式项目，只是单纯的横向拆分多个项目，纵向就是分为常见的controller，service，dao</p></blockquote><h2 id="SOA架构"><a href="#SOA架构" class="headerlink" title="SOA架构"></a>SOA架构</h2><p>分布式的升级版，面向服务，更加细化，分的模块更多，逐渐演变成组件的形式，就是可以共用的一个服务，服务之间采用rpc远程调用机制</p><blockquote><p>rpc远程调用技术框架有httpclient，spingcloud，dubbo，grpc，底层使用的socket或者netty实现</p></blockquote><p>底层使用SOAP（Http或者Https+xml）或者ESB消息总线实现</p><h2 id="微服务架构"><a href="#微服务架构" class="headerlink" title="微服务架构"></a>微服务架构</h2><p>由于SOA缺少对于服务的治理设施，而且json比xml文件更加轻量化，服务更加细化，每个服务独立部署，数据库也不共享，互不影响，使用restful风格提供API，更加轻量级，更加便于敏捷开发，快速迭代</p><h1 id="SpringCloud-服务注册与发现"><a href="#SpringCloud-服务注册与发现" class="headerlink" title="SpringCloud 服务注册与发现"></a>SpringCloud 服务注册与发现</h1><p>在传统的rpc远程调用中，服务与服务之间的依赖关系比较复杂，耦合度过高，A服务调用B服务，B服务调用C服务，服务URL越来越多的时候就需要使用服务治理技术</p><h3 id="SpringCloud支持的注册中心"><a href="#SpringCloud支持的注册中心" class="headerlink" title="SpringCloud支持的注册中心"></a>SpringCloud支持的注册中心</h3><p>注册中心就是存放接口地址信息，有以下三种， Eureka，Consul（go语言写的），Zookeeper</p><p> 首先启动注册中心 ，再启动比如（订单服务）（会员服务） 的相关服务，启动时会把服务地址和端口取个别名，相当于键值的形式注册到注册中心（键app_menber值127.0.0.1:8080）</p><blockquote><p> Eureka这个注册中心，它可不是什么第三方jar包需要安装什么的，Eureka它本身就是一个SpringBoot，也就是说我们用的是一个项目来充当注册中心。 </p></blockquote><p>服务注册：将服务信息注册到注册中心上</p><p>服务发现：从注册中心上获取服务信息</p><p>消费者调用接口时就会使用别名（键）从注册中心获取值（具体的url和端口），提供者使用HttpClient技术实现调用</p><p>在Application.java中使用注解#EnableEurakaServer，就能把服务注册</p><p><img src="/2020/08/18/Springcloud%E5%AD%A6%E4%B9%A0/1595141609531.png" alt="1595141609531"></p><p>调用服务</p><p><img src="/2020/08/18/Springcloud%E5%AD%A6%E4%B9%A0/1595141649554.png" alt="1595141649554"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 框架 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SpringCloud </tag>
+            
+            <tag> 分布式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>jwt单点登录</title>
+      <link href="/2020/08/18/jwt%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/"/>
+      <url>/2020/08/18/jwt%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Zookeeper</title>
+      <link href="/2020/08/18/Zookeeper/"/>
+      <url>/2020/08/18/Zookeeper/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h1><p>Zookper是一个文件系统类型的数据库，创建结点必须要有/斜杠</p><p><code>zkServer.sh start 后边加上cfg的文件路径</code></p><p>就能启动服务,配置多个cfg就可以启动多个服务 ,</p><p><code>zhCli.sh -server ip:端口</code></p><p>启动客户端,可以改变端口和ip连接不同的客户端</p><p>当在A客户端创建结点后,B客户端也能访问到A的结点,具有<strong>数据一致性的分布式</strong></p><h3 id="强一致性"><a href="#强一致性" class="headerlink" title="强一致性"></a>强一致性</h3><p>某一个用户更新数据库A的数据比如value=2,另外一名用户在集群中从数据库B读取到的value一定要是2,这样就要求数据库之间的同步非常迅速,或者加上锁同步完成后才能读到同步后的数据</p><h3 id="弱一致性"><a href="#弱一致性" class="headerlink" title="弱一致性"></a>弱一致性</h3><p>允许用户读取到同步之前的旧数据</p><h3 id="最终一致性"><a href="#最终一致性" class="headerlink" title="最终一致性"></a>最终一致性</h3><p>允许读到旧数据,但一段时间后一定要是新数据</p><h2 id="CAP"><a href="#CAP" class="headerlink" title="CAP"></a>CAP</h2><p>Consistency:强一致性</p><p>Avalibility:可用性,集群可不可用</p><p>Partition Tolerance:分区容错性 </p><p><strong>分区容错性</strong>:分布式架构中,由于很多模块都分开部署,比如在不同的服务器,这就是分区了 ,但此时模块之间的交互就需要网络很快,网络越快容错性就越高,这就是分区容错性</p><p>一个集群需要对外部提供强一致性,所以只要集群内部某一台服务器发生了改编,那么就需要等待集群内其他服务器的数据同步完成后才能正常对外提供服务</p><p>保证了强一致性,通常需要存好可用性</p><h2 id="如何保证一致性"><a href="#如何保证一致性" class="headerlink" title="如何保证一致性"></a>如何保证一致性</h2><p>上课时老师讲完一个知识点通常会问,懂了没有,当有<strong>大部分学生</strong>懂了,老师就会认为同学懂了,老师不会确保所有学生都听懂了,(<strong>过半机制</strong>)</p><p>其中老师和同学就是不同的服务器,老师是老大,老师讲课过程就是同步的过程,同学们回答懂了,就是完成了同步,同步数据的任务就交给老大服务器</p><p><strong>谁的数据越新谁就是老大</strong>,判断依据就是一个<strong>事务id叫做zxid</strong>,是一个自增id,每次进行<strong>事务性请求(增删改)</strong>时就会自增,非事务性请求(查询)就不会改变id,</p><h2 id="选举机制"><a href="#选举机制" class="headerlink" title="选举机制"></a>选举机制</h2><p>如何选择老大,需要投票,首先每个<strong>服务启动时</strong>会进行类似于淘汰赛的<strong>选举机制</strong>,</p><p>选出zxid最大的作为老大服务器,如果zxid相同则选择myid最大的,谁最后启动最大,新建请求就由老大处理,并同步到子服务器,</p><p>当新进来一个服务器时,不管zxid比老大的zxid大还是小,为了保证稳定性,都要与老大服务器同步,</p><p>老大服务器(leader)挂掉之后,就会重新进行选举机制,当子服务器挂掉,导致少于一半的跟随服务器(follower),也会重新进行选举机制</p><h2 id="同步过程"><a href="#同步过程" class="headerlink" title="同步过程"></a>同步过程</h2><p>首先leader服务器<strong>预提交</strong>,就是在follower服务器中创建事务日志,事务日志中包含了具体的修改数据过程,当follower服务器保存成功则返回ack给leader服务器,</p><p>当有大于一半的服务器都返回了ack,则开始真正的同步数据(<strong>提交</strong>),就是把事务日志中的操作变成各个follower服务器的datatree中具体的数据</p><p>当有7台服务器,<code>7/2=3</code>因此只要大于3就算是过半,</p><p>三台服务器在A机房,三台服务器在B机房,就会存在两个老大的问题,会导致数据不一致,</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 框架 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 分布式 </tag>
+            
+            <tag> Zookeeper </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MongoDB安装</title>
+      <link href="/2020/08/18/MongoDB%E5%AE%89%E8%A3%85/"/>
+      <url>/2020/08/18/MongoDB%E5%AE%89%E8%A3%85/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>直接插入排序</title>
       <link href="/2020/08/09/%E7%9B%B4%E6%8E%A5%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/"/>
       <url>/2020/08/09/%E7%9B%B4%E6%8E%A5%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/</url>
