@@ -1,0 +1,96 @@
+---
+title: SpringBoot配置markdown上传图片返回url
+categories:
+  - SpringBoot
+tags:
+  - SpringBoot
+  - markdown
+abbrlink: 838487291
+---
+
+
+1.SpringBoot写方法上传文件到本地某路径文件夹下 2.SpringBoot配置映射这个路径
+<!--more-->
+
+## markdown的图片上传表单如下
+
+![1572148923003](SpringBoot配置markdown上传图片返回url/1572148923003.png)
+
+## SpringBoot上传图片方法
+
+```java
+    @Value("${file.uploadfolder}")
+    private String uploadfolder;//读取配置文件的存放文件路径
+@ResponseBody
+@PostMapping ("/admin/uploadImg")
+public String  uploadImg(HttpServletRequest request, @RequestParam(value = "editormd-image-file", required = false) MultipartFile file){
+    try {
+        //需要上传的路径
+        String rootPath = uploadfolder;
+        //Calendar.getInstance()是获取一个Calendar对象并可以进行时间的计算，时区的指定
+        Calendar date = Calendar.getInstance();
+        //获得日期路径,MONTH个值的初始值是0，因此我们要用它来表示正确的月份时就需要加1。
+        File dateFile = new File(date.get(Calendar.YEAR)+"/"+(date.get(Calendar.MONTH)+1)+"/"+(date.get(Calendar.DATE)));
+        //获得文件名字
+        String originalFile = file.getOriginalFilename();
+        //得到完整路径名
+        File newFile = new File(rootPath+ File.separator+dateFile+File.separator+originalFile);
+        //文件不存在就创建
+        if(!newFile.getParentFile().exists()){
+            newFile.getParentFile().mkdirs();
+        }
+        file.transferTo(newFile);
+        String url="/upload/"+date.get(Calendar.YEAR)+"/"+(date.get(Calendar.MONTH)+1)+"/"+date.get(Calendar.DATE)+"/"+file.getOriginalFilename();
+        JSONObject obj = new JSONObject();
+        obj.put("success",1);
+        obj.put("message", "上传成功");
+        obj.put("url", url);
+       return obj.toString();
+    } catch (Exception e) {
+        JSONObject obj = new JSONObject();
+        obj.put("success",0);
+        obj.put("message", "上传失败");
+        obj.put("url", "");
+        return obj.toString();
+
+    }
+}
+```
+
+## 添加配置文件
+
+```yml
+# 上传文件存放
+file:
+  uploadfolder: D://upload/
+```
+
+## 配置路径映射(关键)
+
+```java
+
+@Configuration
+public class WebPathFigurer implements WebMvcConfigurer {
+    @Value("${file.uploadfolder}")
+    private String uploadfolder;
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/upload/**").addResourceLocations("file:///"+uploadfolder);
+    }
+
+}
+```
+linux系统是没有`///`就只有`file:`
+
+> 关于JSONObject需要添加依赖
+>
+> ```xml
+> <!--    JSONObject -->
+> <dependency>
+>     <groupId>net.sf.json-lib</groupId>
+>     <artifactId>json-lib</artifactId>
+>     <version>2.4</version>
+>     <classifier>jdk15</classifier>
+> </dependency>
+> ```
+
