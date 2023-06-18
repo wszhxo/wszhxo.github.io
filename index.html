@@ -28,13 +28,20 @@
       noData: '找不到结果!',
       depth: 3,                       // 搜索标题的最大程级, 1 - 6
     },
+    beian: {
+      ICP: "浙ICP备19028608号",
+      NISMSP: {
+        number: "-1",
+        url: "https://beian.miit.gov.cn/",
+      },
+    },
     footer: {
-      // copy: '<span id="sitetime" style="font-size:14px"></span><br/><span style="font-size:14px">  Copyright <a href="https://t.1yb.co/sBOZ" target="_blank" style="font-size:14px"> 🏷️ <strong>zhx</strong> </a>  &nbsp;  &copy; 2021.06.11 - 至今 &nbsp; <a href="http://www.beian.gov.cn/portal/index.do" target="_blank" style="font-size:14px"> <strong></strong></a></span>',
-      copy: ' ',
-      // auth: '<br/><span style="font-size:14px"> 正处于并将长期处于java初级阶段!</span>',
+      copy: '<a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备19028608号</a>\n' +
+              '<a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备19028608号-1</a>',
+       // auth: '<br/><span style="font-size:14px"> 正处于并将长期处于java初级阶段!</span>',
       auth: ' ',
       pre: '<hr/>',
-      style: 'text-align: left;',
+      style: 'text-align: right;',
     }//添加页脚
   }
 </script>
@@ -61,6 +68,14 @@
 
 <!-- 图片缩小方法-->
 <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+
+
+<!-- 备案插件-->
+<script src="https://cdn.jsdelivr.net/npm/docsify-beian@latest/dist/beian.min.js"></script>
+
+
+
+
 
 <!-- 回到顶部功能 -->
 <script src="https://cdn.jsdelivr.net/gh/forthespada/forthespada.github.io@master/plugin/jquery.js"></script>
