@@ -1,18 +1,15 @@
 
-- 算法
-  
-  - [观察者模式](source/观察者模式.md)
-  
-  - [fiddler抓包](工具教程/fiddler抓包.md)
-  
 - 设计模式
+  - [策略模式](设计模式/策略模式.md)
+  - [装饰者模式](设计模式/装饰者模式.md)
+  - [观察者模式](设计模式/观察者模式.md)
+  - [责任链模式](设计模式/责任链模式.md)
 - 功能实现
-  
     - [html字符串转为html文件](功能实现/html字符串转为html文件.md)
     - [Linux使用wkhtmltopdf转pdf功能](功能实现/Linux使用wkhtmltopdf转pdf功能.md)
-    
     - [Nginx开启Gzip压缩](功能实现/Nginx开启Gzip压缩.md)
-    - [Redis监听过期key](功能实现/功能实现\Redis监听过期key.md)
+    - [Redis监听过期key](功能实现/Redis监听过期key.md)
+    - [微信小程序消息推送](功能实现/微信小程序消息推送.md)
 - Spring
 - SpringCloud
 - Mybais
@@ -29,7 +26,6 @@
 - Linux
 
     - [linux操作](Linux/linux操作.md)
-- 面试相关
 - 功能实现
 
   - [Linux使用wkhtmltopdf转pdf功能](功能实现/Linux使用wkhtmltopdf转pdf功能.md)
@@ -42,7 +38,7 @@
     - [fiddler抓包](工具教程/fiddler抓包.md)
     - [分布式任务调度系统XXL-job](工具教程/分布式任务调度系统XXL-job.md)
 - 杂项
- - [其他文章](https://gitee.com/cuberzhx/study-diary/tree/page/source)
+- [其他文章](https://gitee.com/cuberzhx/study-diary/tree/page/source)
 
 
 
