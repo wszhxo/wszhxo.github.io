@@ -38,7 +38,6 @@
     - [fiddler抓包](工具教程/fiddler抓包.md)
     - [分布式任务调度系统XXL-job](工具教程/分布式任务调度系统XXL-job.md)
 - 杂项
-- [其他文章](https://gitee.com/cuberzhx/study-diary/tree/page/source)
-
+- [其他文章](https://gitee.com/cuberzhx/cuberzhx/)
 
 
